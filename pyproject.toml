@@ -5,9 +5,6 @@ description = "Agent harness with shared registry, guardrails and evals"
 requires-python = ">=3.13"
 dependencies = []
 
-[project.scripts]
-agent-system = "agent_system:main"
-
 [build-system]
 requires = ["uv_build>=0.12.23,<0.13.0"]
 build-backend = "uv_build"
