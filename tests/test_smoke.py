@@ -9,10 +9,10 @@ from agent_system.graph import graph
 def test_chat_thread_continues():
     c = TestClient(app)
     r1 = c.post("/chat", json={"message": "hello"}).json()
-    assert r1["reply"] == "stub: hello"
+    assert r1["reply"] == "researcher: hello"
     r2 = c.post("/chat", json={"message": "again", "thread_id": r1["thread_id"]}).json()
     assert r2["thread_id"] == r1["thread_id"]
-    assert r2["reply"] == "stub: again"
+    assert r2["reply"] == "researcher: again"
     state = graph.get_state(config={"configurable": {"thread_id": r1["thread_id"]}})
     assert len(state.values["messages"]) == 4
 
