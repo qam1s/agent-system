@@ -4,23 +4,17 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "qam1s"
     assignees:
       - "qam1s"
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "qam1s"
     assignees:
       - "qam1s"
   - package-ecosystem: "pre-commit"
     directory: "/"
     schedule:
       interval: "weekly"
-    reviewers:
-      - "qam1s"
     assignees:
       - "qam1s"
