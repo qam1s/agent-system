@@ -1,12 +1,12 @@
 [project]
 name = "agent-system"
 version = "0.1.0"
-description = "Agent harness with shared registry, guardrails and evals"
+description = "Multi-agent harness with shared tool registry"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.154.0",
     "langchain>=1.4.6",
-    "langgraph>=1.2.15",
+    "langgraph>=1.2.16",
     "langgraph-checkpoint-postgres>=3.2.0",
     "psycopg-binary>=3.3.6",
     "uvicorn>=0.54.0",
@@ -16,7 +16,7 @@ dependencies = [
 agent-system = "agent_system:main"
 
 [build-system]
-requires = ["uv_build>=0.13.1,<0.14.0"]
+requires = ["uv_build>=0.13.4,<0.14.0"]
 build-backend = "uv_build"
 
 [dependency-groups]
