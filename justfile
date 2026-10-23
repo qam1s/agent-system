@@ -2,13 +2,16 @@ default:
     @just --list
 
 run:
-    uv run agent-system
+    uv run uvicorn back.main:app --host 0.0.0.0 --port 8000
 
 dev:
-    uv run uvicorn agent_system.gateway:app --reload --app-dir src
+    uv run uvicorn back.main:app --reload
 
 test:
     uv run pytest
+
+front:
+    uv run python -m front.main
 
 lint:
     uv run ruff check .

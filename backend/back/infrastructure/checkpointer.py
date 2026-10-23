@@ -8,8 +8,8 @@ _stack = ExitStack()
 _postgres: Any | None = None
 
 
-def get_checkpointer():
-    url = os.getenv("DATABASE_URL", "").strip()
+def get_checkpointer(database_url: str = ""):
+    url = database_url.strip() or os.getenv("DATABASE_URL", "").strip()
     if not url:
         return InMemorySaver()
     global _postgres

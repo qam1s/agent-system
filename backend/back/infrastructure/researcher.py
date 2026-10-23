@@ -1,8 +1,9 @@
 from langchain_core.messages import AIMessage
 from langgraph.graph import END, START, StateGraph
 
-from .roles import RoleDef, register, role_names
-from .state import AgentState
+from ..application.state import AgentState
+from ..domain.entities import RoleDef
+from .role_registry import InMemoryRoleRegistry
 
 PROMPT_ID = "researcher/v0"
 SYSTEM_PROMPT = (
@@ -23,8 +24,8 @@ def build_researcher():
     return builder.compile()
 
 
-def register_researcher() -> RoleDef:
-    return register(
+def register_researcher(registry: InMemoryRoleRegistry) -> RoleDef:
+    return registry.register(
         RoleDef(
             name="researcher",
             description="plan→search→report with citations; abstains on no-hit",
@@ -32,7 +33,3 @@ def register_researcher() -> RoleDef:
             builder=build_researcher,
         )
     )
-
-
-if "researcher" not in role_names():
-    register_researcher()
