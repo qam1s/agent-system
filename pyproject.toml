@@ -1,7 +1,7 @@
 [project]
 name = "agent-system"
 version = "0.1.0"
-description = "Agent harness with shared registry, guardrails and evals"
+description = "Multi-agent harness with shared tool registry"
 requires-python = ">=3.13"
 dependencies = [
     "fastapi>=0.154.0",

@@ -1,6 +1,6 @@
 # Agent System
 
-Agent harness with shared registry, guardrails and evals: one core runtime plus a registry of independent agents (roles) that work in groups when needed.
+Multi-agent harness with shared tool registry: one core runtime plus a registry of independent agents (roles) that work in groups when needed.
 
 ## Language
 
