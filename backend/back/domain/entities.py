@@ -1,6 +1,6 @@
 from collections.abc import Callable, Sequence
 from dataclasses import dataclass, field
-from typing import Any
+from typing import Any, TypedDict
 
 
 @dataclass
@@ -30,3 +30,27 @@ class RoleDef:
 class McpServer:
     name: str
     description: str = ""
+
+
+@dataclass
+class Source:
+    id: str
+    title: str
+    text: str
+
+
+class Hit(TypedDict):
+    id: str
+    title: str
+    text: str
+    score: int
+
+
+class Route(TypedDict):
+    role: str
+    confidence: float
+
+
+class GateVerdict(TypedDict):
+    passed: bool
+    issues: list[str]

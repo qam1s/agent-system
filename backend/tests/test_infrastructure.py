@@ -32,13 +32,28 @@ def test_role_registry_call_and_tool():
     register_researcher(registry)
 
     assert "researcher" in registry.names()
-    reply = registry("researcher", "q1")
+    reply = registry("researcher", "how does the checkpointer work")
 
-    assert reply == "researcher: q1"
+    assert "[S1]" in reply
+    assert "Sources:" in reply
     tool = registry.as_tool("researcher")
 
     assert tool.name == "call_researcher"
-    assert tool.invoke({"query": "q2"}) == "researcher: q2"
+    assert "[S1]" in tool.invoke({"query": "checkpointer"})
+
+
+def test_role_registry_abstains_on_no_hit():
+    registry = InMemoryRoleRegistry()
+    register_researcher(registry)
+
+    assert "abstain" in registry("researcher", "hello")
+
+
+def test_role_registry_clarifies_empty_query():
+    registry = InMemoryRoleRegistry()
+    register_researcher(registry)
+
+    assert "clarify" in registry("researcher", "   ")
 
 
 def test_role_registry_unknown_role():

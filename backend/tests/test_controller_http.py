@@ -12,12 +12,19 @@ def make_client(monkeypatch) -> TestClient:
 
 def test_chat_controller_replies(monkeypatch):
     client = make_client(monkeypatch)
-    response = client.post("/chat", json={"message": "hello"})
+    response = client.post("/chat", json={"message": "how does the checkpointer work"})
 
     assert response.status_code == 200
     body = response.json()
-    assert body["reply"] == "researcher: hello"
+    assert "[S1]" in body["reply"]
     assert body["thread_id"]
+
+
+def test_chat_controller_abstains_on_no_hit(monkeypatch):
+    client = make_client(monkeypatch)
+    body = client.post("/chat", json={"message": "hello"}).json()
+
+    assert "abstain" in body["reply"]
 
 
 def test_chat_controller_idempotent(monkeypatch):

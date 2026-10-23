@@ -16,13 +16,13 @@ def make_client(monkeypatch) -> tuple[TestClient, Any]:
 
 def test_chat_thread_continues(monkeypatch):
     client, graph = make_client(monkeypatch)
-    r1 = client.post("/chat", json={"message": "hello"}).json()
-    assert r1["reply"] == "researcher: hello"
+    r1 = client.post("/chat", json={"message": "how does the checkpointer work"}).json()
+    assert "[S1]" in r1["reply"]
     r2 = client.post(
         "/chat", json={"message": "again", "thread_id": r1["thread_id"]}
     ).json()
     assert r2["thread_id"] == r1["thread_id"]
-    assert r2["reply"] == "researcher: again"
+    assert "abstain" in r2["reply"]
     state = graph.get_state(config={"configurable": {"thread_id": r1["thread_id"]}})
     assert len(state.values["messages"]) == 4
 
