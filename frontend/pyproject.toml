@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Frontend"
 requires-python = ">=3.13"
 dependencies = [
-    "gradio>=5.0",
+    "gradio>=6.31.0",
     "httpx>=0.28.1",
 ]
 
