@@ -4,7 +4,7 @@ version = "0.1.0"
 description = "Backend"
 requires-python = ">=3.13"
 dependencies = [
-    "fastapi>=0.154.0",
+    "fastapi>=0.162.2",
     "langchain>=1.4.6",
     "langgraph>=1.2.19",
     "langgraph-checkpoint-postgres>=3.2.0",
